@@ -31,11 +31,13 @@
             </div>
             <div class="col-lg-9">
                 <div class="row mr-2">
-                    <div class="col-lg-11 card m-3 d-none" id="current-weather">
+                    <div class="col-lg-11 card m-3" id="current-weather">
                         <div class="card-body">
                             <h3 id="city-name" class="city-name align-middle"></h3>
+                            <p id="date"></p>
                             <!--enter icon here-->
-                            <p id="temp"></p>
+                            <img id="icon" src="" />
+                            <p id="temp"> </p>
                             <p id="hum"></p>
                             <p id="wind"></p>
                             <p id="uv"></p>
@@ -48,14 +50,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-3"></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day1"></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day2"></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day3"></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day4"></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day5"></div>
+                    <!--repeat this div four more times?-->
                 </div>
             </div>
 
         </div>
     </div>
 
-
-    <script src="./assets/js/sript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--Do I need to include moment for time reference? Commented out below-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 
