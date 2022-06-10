@@ -18,6 +18,8 @@ var searchCity = function(event) {
     
 var city = cityInputEl.value.trim();
 
+
+
     var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
 
     fetch(apiUrl)
@@ -87,7 +89,29 @@ var displayCurrentWeather = function(cityData) {
 
     var uvEl = document.getElementById("uv")
     uvEl.textContent = "UV Index: " + cityData.current.uvi
+
+    fiveDayForecast(cityData);
+                        
 };
+
+var fiveDayForecast = function(cityData) {
+    console.log(cityData);
+
+    for (var i=1; i < 6; i++) {        
+
+        var forecastDateEl = document.getElementById("date" + i)
+        forecastDateEl.textContent = moment(cityData.daily[i].dt *1000).format("MMM DD")
+
+        
+
+
+                                
+        
+        //  "Windspeed: " + cityData.daily[i].wind_speed
+
+    }
+
+}
 
 
 

@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <h3 id="city-name" class="city-name align-middle"></h3>
                             <p id="date"></p>
-                            <!--enter icon here-->
+                            
                             <img id="icon" src="" />
                             <p id="temp"> </p>
                             <p id="hum"></p>
@@ -44,18 +44,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="row d-none" id="forecast-header">
+                <div class="row" id="forecast-header">
                     <div class="col-12">
                         <h3>5-day forecast</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day1"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day2"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day3"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day4"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day5"></div>
-                    <!--repeat this div four more times?-->
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day1">
+                        <p id="date1"></p>
+                        <img id="icon1" src="" />
+                        <p id="temp1"></p>
+                        <p id="wind1"></p>
+                        <p id="hum1"></p>
+                    </div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day2">
+                        <p id="date2"></p>
+                        <img id="icon2" src="" />
+                        <p id="temp2"></p>
+                        <p id="wind2"></p>
+                        <p id="hum2"></p>
+                    </div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day3">
+                        <p id="date3"></p>
+                        <img id="icon3" src="" />
+                        <p id="temp3"></p>
+                        <p id="wind3"></p>
+                        <p id="hum3"></p>
+                    </div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3" id="day4">
+                        <p id="dat41"></p>
+                        <img id="icon4" src="" />
+                        <p id="temp4"></p>
+                        <p id="wind4"></p>
+                        <p id="hum4"></p>
+                    </div>
+                    <div class="col-md-2 forecast bg-primary text-white m-3"id="day5">
+                        <p id="date5"></p>
+                        <img id="icon5" src="" />
+                        <p id="temp5"></p>
+                        <p id="wind5"></p>
+                        <p id="hum5"></p>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -63,7 +93,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!--Do I need to include moment for time reference? Commented out below-->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
