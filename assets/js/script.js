@@ -3,7 +3,8 @@ var apiKey = "2dec3d0eee211f2e9659dcccac2ff8f5";
 var searchBtnEl = document.querySelector("#search-button");
 var cityInputEl = document.querySelector("#city-input");
 
-city = "";
+var city = "";
+
 
 
 
@@ -14,7 +15,8 @@ var searchCity = function(event) {
     event.preventDefault();
 
     // get value from city search input
-    var city = cityInputEl.value.trim();
+    
+var city = cityInputEl.value.trim();
 
     var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
 
@@ -36,8 +38,9 @@ var searchCity = function(event) {
             alert("Unable to connect to weather service.");
         });
 
-
-    // getWeather(city);
+    var cityNameEl = document.getElementById("city-name")
+    cityNameEl.textContent = city
+    
         
 };
 
@@ -66,8 +69,6 @@ var getWeather = function(lat, lon) {
 var displayCurrentWeather = function(cityData) {
     console.log(cityData);
     
-    
-    
 
     var dateEl = document.getElementById("date")
     dateEl.textContent = moment(cityData.current.dt *1000).format("MMM DD YYYY")
@@ -77,6 +78,15 @@ var displayCurrentWeather = function(cityData) {
 
     var tempEl = document.getElementById("temp")
     tempEl.textContent = "Temp: " + cityData.current.temp 
+
+    var humEl = document.getElementById("hum")
+    humEl.textContent = "Humidity: " + cityData.current.humidity
+
+    var windEl = document.getElementById("wind")
+    windEl.textContent = "Wind Speed: " + cityData.current.wind_speed
+
+    var uvEl = document.getElementById("uv")
+    uvEl.textContent = "UV Index: " + cityData.current.uvi
 };
 
 
