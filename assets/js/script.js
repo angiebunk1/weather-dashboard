@@ -102,12 +102,19 @@ var fiveDayForecast = function(cityData) {
         var forecastDateEl = document.getElementById("date" + i)
         forecastDateEl.textContent = moment(cityData.daily[i].dt *1000).format("MMM DD")
 
-        
+        var forecastIconEl = document.getElementById("icon" + i)
+        forecastIconEl.setAttribute("src", "http://openweathermap.org/img/w/" + cityData.daily[i].weather[0].icon + ".png")
 
+        var forecastTempEl = document.getElementById("temp" + i)
+        forecastTempEl.textContent = "Temp: " + cityData.daily[i].temp.day
 
-                                
+        var forecastWindEl = document.getElementById("wind" + i)
+        forecastWindEl.textContent = "Wind Speed: " + cityData.daily[i].wind_speed
+
+        var forecastHumEl = document.getElementById("hum" + i)
+        forecastHumEl.textContent = "Humidity: " + cityData.daily[i].humidity                             
         
-        //  "Windspeed: " + cityData.daily[i].wind_speed
+        
 
     }
 
