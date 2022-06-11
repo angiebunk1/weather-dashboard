@@ -3,6 +3,8 @@ var apiKey = "2dec3d0eee211f2e9659dcccac2ff8f5";
 var searchBtnEl = document.querySelector("#search-button");
 var cityInputEl = document.querySelector("#city-input");
 
+// var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+
 var city = "";
 
 
@@ -42,6 +44,12 @@ var city = cityInputEl.value.trim();
 
     var cityNameEl = document.getElementById("city-name")
     cityNameEl.textContent = city
+
+    // var searchedCityEl = document.getElementById("search-history")
+    // searchedCityEl.textContent = city
+
+    
+
     
         
 };
@@ -118,7 +126,7 @@ var fiveDayForecast = function(cityData) {
 
     }
 
-}
+};
 
 
 
