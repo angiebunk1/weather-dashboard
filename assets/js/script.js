@@ -128,7 +128,7 @@ var fiveDayForecast = function(cityData) {
 searchBtnEl.addEventListener("click", function() {
 
 
-city = cityInputEl.value;
+city = cityInputEl.value.trim();
 
 searchCity(city);
 
@@ -136,8 +136,6 @@ searchCity(city);
 localStorage.setItem("search", city);
 searchedCities.push(city);
 localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-
-// renderSearchHistory();
 
 
 });
@@ -151,21 +149,21 @@ var loadHistory = function() {
     } else {
         searchedCities = [];
     }
+
+    displayHistory();
+}
+
+
+var displayHistory = function() {
+    historyEl.innerHTML = "";
+    for (var i=0; i < searchedCities.length; i++) {
+        var historyBtn = document.createElement("button");
+        historyBtn.setAttribute("type", "button");
+        historyBtn.textContent = searchedCities[i];
+        historyBtn.setAttribute("class", "bg-white mb-2");
+        historyEl.appendChild(historyBtn);
+    }
 }
 
 loadHistory();
 
-// var renderSearchHistory = function() {
-//     historyEl.innerHTML = "";
-//     for (var i=0; i < .length; i++) {
-//         var historyBtn = document.createElement("button");
-//         historyBtn.setAttribute("type", "button");
-//         historyBtn.textContent = searchHistory[i];
-//         historyBtn.setAttribute("class", "bg-white mb-2");
-//         historyEl.appendChild(historyBtn);
-
-        
-//     }
-
-
-// }
