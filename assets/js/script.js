@@ -5,7 +5,7 @@ var cityInputEl = document.querySelector("#city-input");
 
 var historyEl = document.querySelector("#search-history");
 
-var searchHistory = [];
+var searchedCities = "";
 
 var city = "";
 
@@ -40,17 +40,9 @@ var searchCity = function(city) {
         })
         .catch(function(error) {
             alert("Unable to connect to weather service.");
-        });
+        }); 
 
-   
-
-    // var searchedCityEl = document.getElementById("search-history")
-    // searchedCityEl.textContent = city
-
-    
-
-    
-        
+           
 };
 
 var getWeather = function(lat, lon) {
@@ -134,33 +126,46 @@ var fiveDayForecast = function(cityData) {
 
 // city search button event listener
 searchBtnEl.addEventListener("click", function() {
-// prevent page from reloading
-// preventDefault();
 
-// get value from city search input
 
-var city = cityInputEl.value.trim();
+city = cityInputEl.value;
 
 searchCity(city);
 
-searchHistory.push(city);
 
-localStorage.setItem("search", JSON.stringify(searchHistory));
+localStorage.setItem("search", city);
+searchedCities.push(city);
+localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
 
-renderSearchHistory();
+// renderSearchHistory();
 
 
 });
 
-var renderSearchHistory = function() {
-    historyEl.innerHTML = "";
-    for (var i=0; i < searchHistory.length; i++) {
-        var historyBtn = document.createElement("button");
-        historyBtn.setAttribute("type", "button");
-        historyBtn.textContent = searchHistory[i];
-        historyBtn.setAttribute("class", "bg-white mb-2");
-        historyEl.appendChild(historyBtn);
+
+var loadHistory = function() {
+    var searchHistory = JSON.parse(localStorage.getItem("searchedCities"));
+
+    if (searchHistory) {
+        searchedCities = searchHistory;
+    } else {
+        searchedCities = [];
     }
-
-
 }
+
+loadHistory();
+
+// var renderSearchHistory = function() {
+//     historyEl.innerHTML = "";
+//     for (var i=0; i < .length; i++) {
+//         var historyBtn = document.createElement("button");
+//         historyBtn.setAttribute("type", "button");
+//         historyBtn.textContent = searchHistory[i];
+//         historyBtn.setAttribute("class", "bg-white mb-2");
+//         historyEl.appendChild(historyBtn);
+
+        
+//     }
+
+
+// }
