@@ -5,7 +5,7 @@ var cityInputEl = document.querySelector("#city-input");
 
 var historyEl = document.querySelector("#search-history");
 
-var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+var searchHistory = [];
 
 var city = "";
 
@@ -135,7 +135,7 @@ var fiveDayForecast = function(cityData) {
 // city search button event listener
 searchBtnEl.addEventListener("click", function() {
 // prevent page from reloading
-preventDefault();
+// preventDefault();
 
 // get value from city search input
 
@@ -153,5 +153,14 @@ renderSearchHistory();
 });
 
 var renderSearchHistory = function() {
+    historyEl.innerHTML = "";
+    for (var i=0; i < searchHistory.length; i++) {
+        var historyBtn = document.createElement("button");
+        historyBtn.setAttribute("type", "button");
+        historyBtn.textContent = searchHistory[i];
+        historyBtn.setAttribute("class", "bg-white mb-2");
+        historyEl.appendChild(historyBtn);
+    }
+
 
 }
