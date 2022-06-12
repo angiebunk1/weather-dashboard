@@ -3,7 +3,9 @@ var apiKey = "2dec3d0eee211f2e9659dcccac2ff8f5";
 var searchBtnEl = document.querySelector("#search-button");
 var cityInputEl = document.querySelector("#city-input");
 
-// var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+var historyEl = document.querySelector("#search-history");
+
+var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
 var city = "";
 
@@ -12,13 +14,11 @@ var city = "";
 
 
 
-var searchCity = function(event) {
-    // prevent page from reloading
-    event.preventDefault();
-
-    // get value from city search input
+var searchCity = function(city) {
     
-var city = cityInputEl.value.trim();
+
+ var cityNameEl = document.getElementById("city-name")
+    cityNameEl.textContent = city
 
 
 
@@ -42,8 +42,7 @@ var city = cityInputEl.value.trim();
             alert("Unable to connect to weather service.");
         });
 
-    var cityNameEl = document.getElementById("city-name")
-    cityNameEl.textContent = city
+   
 
     // var searchedCityEl = document.getElementById("search-history")
     // searchedCityEl.textContent = city
@@ -134,4 +133,25 @@ var fiveDayForecast = function(cityData) {
 
 
 // city search button event listener
-searchBtnEl.addEventListener("click", searchCity);
+searchBtnEl.addEventListener("click", function() {
+// prevent page from reloading
+preventDefault();
+
+// get value from city search input
+
+var city = cityInputEl.value.trim();
+
+searchCity(city);
+
+searchHistory.push(city);
+
+localStorage.setItem("search", JSON.stringify(searchHistory));
+
+renderSearchHistory();
+
+
+});
+
+var renderSearchHistory = function() {
+
+}
