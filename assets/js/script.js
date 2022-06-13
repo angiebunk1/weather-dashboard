@@ -9,9 +9,7 @@ var searchedCities = "";
 
 var city = "";
 
-
-
-
+var historyBtn = "";
 
 
 var searchCity = function(city) {
@@ -113,30 +111,18 @@ var fiveDayForecast = function(cityData) {
         var forecastHumEl = document.getElementById("hum" + i)
         forecastHumEl.textContent = "Humidity: " + cityData.daily[i].humidity                             
         
-        
-
     }
 
 };
 
 
-
-
-
-
-// city search button event listener
 searchBtnEl.addEventListener("click", function() {
-
-
 city = cityInputEl.value.trim();
-
 searchCity(city);
-
 
 localStorage.setItem("search", city);
 searchedCities.push(city);
 localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-
 
 });
 
@@ -151,19 +137,26 @@ var loadHistory = function() {
     }
 
     displayHistory();
-}
+};
 
 
 var displayHistory = function() {
     historyEl.innerHTML = "";
     for (var i=0; i < searchedCities.length; i++) {
-        var historyBtn = document.createElement("button");
+        historyBtn = document.createElement("button");
         historyBtn.setAttribute("type", "button");
+        historyBtn.setAttribute("class", "mb-2 bg-white");
         historyBtn.textContent = searchedCities[i];
-        historyBtn.setAttribute("class", "bg-white mb-2");
-        historyEl.appendChild(historyBtn);
+        historyBtn.addEventListener("click", function(){
+            searchCity(historyBtn.textContent);
+        });
+        historyEl.appendChild(historyBtn);        
     }
-}
+};
+
+
+
+
 
 loadHistory();
 
