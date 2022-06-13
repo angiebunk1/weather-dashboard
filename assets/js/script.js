@@ -87,6 +87,16 @@ var displayCurrentWeather = function(cityData) {
     var uvEl = document.getElementById("uv")
     uvEl.textContent = "UV Index: " + cityData.current.uvi
 
+    if (cityData.current.uvi < 3) {
+        uvEl.setAttribute("class", "badge badge-success");
+    }
+    else if (cityData.current.uvi >= 3 && cityData.current.uvi < 6) {
+        uvEl.setAttribute("class", "badge badge-warning");
+    }
+    else {
+        uvEl.setAttribute("class", "badge badge-danger");
+    }
+
     fiveDayForecast(cityData);
                         
 };
@@ -153,9 +163,6 @@ var displayHistory = function() {
         historyEl.appendChild(historyBtn);        
     }
 };
-
-
-
 
 
 loadHistory();
